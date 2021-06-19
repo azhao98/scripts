@@ -17,11 +17,11 @@ For the script that runs on an EC2 instance (a1_ec2.sh), there are a few things 
 
 For the script that runs locally, it starts off by authenticating the user using their programmatic access keys. It then goes on to perform the query and then deletes the credentials. I understand that this is a known security flaw as credentials are stored on disk. However, I could not determine any other methods that would authenticate to the user's AWS account on their local machine.
 
-## Pre-requisites for running this script:
+## Pre-requisites for running this script
 - Must have AWS CLI installed (preferably version 2) - https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
 - Must have coreutils package to use gdate.
 
-## Implementation Detail for Assignment 1:
+## Implementation Detail for Assignment 1
 - There was no method I could find where I could take the account ID as an input and authenticate to the AWS account. I would like some feedback on this if possible.
 - Hence, I created the script with the assumption that the script was being run on an EC2 instance with the correct IAM role attached to it.
 - aws configure should never be used as a login, especially on EC2 instances. However, for the purposes of running the script on a local machine, I have added it in.
@@ -41,15 +41,15 @@ This script takes three inputs:
 
 ### It outputs all files that have been modified between tag 1 and tag 2 for a chosen GitHub repository e.g. v1.2.0 and v1.3.0, excluding any files that begin with 'excl'.
 
-## Pre-requisites for running the script:
+## Pre-requisites for running the script
 - Git CLI: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
-## Implementation Detail:
+## Implementation Detail for Assignment 2
 - The goal of the script was to be able to take any remote repository and find the difference in files between two tags without cloning the repository. However, that proved quite difficult.
 - The implementation that I have done clones the remote repository and then performs the diff which adds a little bit of overhead as it requires cloning the repository that is potentially large.
 - Some feedback on how to implement the first option would be great.
 
-## Notes:
+## Notes
 - This script was produced and tested on a Mac OSX operating system. 
 
 ## Instructions 
