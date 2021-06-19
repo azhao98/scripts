@@ -8,7 +8,7 @@ The second script, a1.sh runs on a user's local machine.
 
 The script queries and displays all AWS private AMIs that are older than 60 days. 
 
-For the script that runs on an EC2 instance, there are a few things that must be done before the script can be run.
+For the script that runs on an EC2 instance (a1_ec2.sh), there are a few things that must be done before the script can be run.
 - An EC2 instance will need to be launched with a key pair and an IAM role that gives Read-Only access to the instance. The Permission policy 'AmazonEC2ReadOnlyAccess' will be sufficient.
 - The following command needs to be run to copy the script onto the instance: scp -i <pem_file> <script_file> ec2-user@<instance_ip>:/home/ec2-user
 - An example of the command is scp -i MyKp.pem ~/Documents/a1_ec2.sh ec2-user@123.21.31.21:/home/ec2-user
