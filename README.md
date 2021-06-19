@@ -1,4 +1,31 @@
-# scripts
+# Assignment 1
+
+There are two scripts for this assignment.
+
+The first script, a1_ec2.sh runs on an EC2 instance.
+
+The second script, a1.sh runs on a user's local machine.
+
+The script queries and displays all AWS private AMIs that are older than 60 days. 
+
+For the script that runs on an EC2 instance, there are a few things that must be done before the script can be run.
+- An EC2 instance will need to be launched with a key pair and an IAM role that gives Read-Only access to the instance. The Permission policy 'AmazonEC2ReadOnlyAccess' will be sufficient.
+- The following command needs to be run to copy the script onto the instance: scp -i <pem_file> <script_file> ec2-user@<instance_ip>:/home/ec2-user
+- An example of the command is scp -i MyKp.pem ~/Documents/a1_ec2.sh ec2-user@123.21.31.21:/home/ec2-user
+- Now, you may SSH into the instance and run the script.
+- Ensure the correct permission are placed onto the script - chmod u+x a1_ec2.sh
+- Run the script: ./a1_ec2.sh
+
+For the script that runs locally, it starts off by authenticating the user using their programmatic access keys. It then goes on to perform the query and then deletes the credentials.
+
+Implementation Detail for a1_ec2.sh:
+- There was no method I could find where I could take the account ID as an input and authenticate to the AWS account.
+- Hence, I created the script with the assumption that the script was being run on an EC2 instance with the correct IAM role attached to it.
+
+Implementation Detail for a1.sh:
+- aws configure was used to authenticate the user into their AWS environment. This is a known security flaw as credentials are stored on disk. However, I could not determine any other methods that would authenticate to the user's AWS account on their local machine.
+- The credentials are deleted after the query is run. 
+
 
 
 # Assignment 2
