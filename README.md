@@ -1,34 +1,31 @@
 # Assignment 1
 
-There are two scripts for this assignment.
+There are two scripts for this assignment. 
+- The first script, a1_ec2.sh runs on an EC2 instance (tested on Linux).
+- The second script, a1.sh runs on a user's local machine (tested on Mac OSX).
 
-The first script, a1_ec2.sh runs on an EC2 instance.
-
-The second script, a1.sh runs on a user's local machine.
-
-The script queries and displays all AWS private AMIs that are older than 60 days. 
+### The script queries and displays all AWS private AMIs that are older than 60 days. 
 
 For the script that runs on an EC2 instance (a1_ec2.sh), there are a few things that must be done before the script can be run.
-- An EC2 instance will need to be launched with a key pair and an IAM role that gives Read-Only access to the instance. The Permission policy 'AmazonEC2ReadOnlyAccess' will be sufficient.
+- The EC2 instance must have permissions to read AMIs. This can be done by attaching an IAM role to the instance with adequate permissions. The AmazonEC2ReadOnlyAccess IAM Permission is enough.
 - The following command needs to be run to copy the script onto the instance: scp -i <pem_file> <script_file> ec2-user@<instance_ip>:/home/ec2-user
-- An example of the command is scp -i MyKp.pem ~/Documents/a1_ec2.sh ec2-user@123.21.31.21:/home/ec2-user
 - Now, you may SSH into the instance and run the script.
 - Ensure the correct permission are placed onto the script - chmod u+x a1_ec2.sh
 - Run the script: ./a1_ec2.sh
 
-For the script that runs locally, it starts off by authenticating the user using their programmatic access keys. It then goes on to perform the query and then deletes the credentials.
+
+For the script that runs locally, it starts off by authenticating the user using their programmatic access keys. It then goes on to perform the query and then deletes the credentials. I understand that this is a known security flaw as credentials are stored on disk. However, I could not determine any other methods that would authenticate to the user's AWS account on their local machine.
 
 Pre-requisites for running this script:
-- Must have AWS CLI installed (preferably version 2)
-- Must have coreutils package
+- Must have AWS CLI installed (preferably version 2) - https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+- Must have coreutils package to use gdate.
 
-Implementation Detail for a1_ec2.sh:
-- There was no method I could find where I could take the account ID as an input and authenticate to the AWS account.
+Implementation Detail for Assignment 1:
+- There was no method I could find where I could take the account ID as an input and authenticate to the AWS account. I would like some feedback on this if possible.
 - Hence, I created the script with the assumption that the script was being run on an EC2 instance with the correct IAM role attached to it.
+- aws configure should never be used as a login, especially on EC2 instances. However, for the purposes of running the script on a local machine, I have added it in.
+- Both scripts have been extended so that it can determine AMIs of any age, not just 60 days. This can be modified by changing the value within the script.
 
-Implementation Detail for a1.sh:
-- aws configure was used to authenticate the user into their AWS environment. This is a known security flaw as credentials are stored on disk. However, I could not determine any other methods that would authenticate to the user's AWS account on their local machine.
-- The credentials are deleted after the query is run. 
 
 
 
