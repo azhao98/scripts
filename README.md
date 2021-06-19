@@ -1,11 +1,12 @@
 # Assignment 1
 
+### The script queries and displays all AWS private AMIs that are older than 60 days. 
+
 There are two scripts for this assignment. 
 - The first script, a1_ec2.sh runs on an EC2 instance (tested on Linux).
 - The second script, a1.sh runs on a user's local machine (tested on Mac OSX).
 
-### The script queries and displays all AWS private AMIs that are older than 60 days. 
-
+## Instructions
 For the script that runs on an EC2 instance (a1_ec2.sh), there are a few things that must be done before the script can be run.
 - The EC2 instance must have permissions to read AMIs. This can be done by attaching an IAM role to the instance with adequate permissions. The AmazonEC2ReadOnlyAccess IAM Permission is enough.
 - The following command needs to be run to copy the script onto the instance: scp -i <pem_file> <script_file> ec2-user@<instance_ip>:/home/ec2-user
@@ -38,7 +39,7 @@ This script takes three inputs:
 2. Tag 1 e.g. v1.2.0
 3. Tag 2 e.g. v1.3.0
 
-It outputs all files that have been modified between tag 1 and tag 2 for a chosen GitHub repository e.g. v1.2.0 and v1.3.0, excluding any files that begin with 'excl'.
+### It outputs all files that have been modified between tag 1 and tag 2 for a chosen GitHub repository e.g. v1.2.0 and v1.3.0, excluding any files that begin with 'excl'.
 
 Pre-requisites for running the script:
 - Git CLI: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
@@ -51,7 +52,7 @@ Implementation Detail:
 Notes:
 - This script was produced and tested on a Mac OSX operating system. 
 
-How to run?
+## Instructions 
 - cd into the directory that contains the script
 - Ensure the following command is run: chmod u+x a2.sh
 - Example run: ./a2.sh 99designs/aws-vault v6.2.0 v6.3.1
