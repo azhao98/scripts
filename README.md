@@ -3,15 +3,19 @@
 
 # Assignment 2
 
-This script takes three inputs - Github repository, tag 1 and tag 2.
+This script takes three inputs:
+1. Github repository. This needs to be specified with the owner and the repo name e.g. 99designs/aws-vault
+2. Tag 1 e.g. v1.2.0
+3. Tag 2 e.g. v1.3.0
 
-It outputs all files that have been modified between one tag and another tag for a chosen repository e.g. v1.2.0 and v1.3.0, excluding any files that begin with 'excl'.
+It outputs all files that have been modified between tag 1 and tag 2 for a chosen GitHub repository e.g. v1.2.0 and v1.3.0, excluding any files that begin with 'excl'.
 
 Pre-requisites for running the script:
-- Git CLI Access
+- Git CLI: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 Implementation Detail:
-- The goal of the script was to be able to take any remote repository and find the difference in files between two tags. However, that proved quite difficult.
+- The goal of the script was to be able to take any remote repository and find the difference in files between two tags without cloning the repository. However, that proved quite difficult.
 - The implementation that I have done clones the remote repository and then performs the diff which adds a little bit of overhead as it requires cloning the repository that is potentially large.
+- Some feedback on how to implement the first option would be great.
  
 
