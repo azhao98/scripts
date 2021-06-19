@@ -12,7 +12,7 @@ repo_name=${repository##*/}
 
 # Change to home directory and clone the repo. 
 cd ~
-git clone "https://github.com/$repository.git" --depth=2
+git clone "https://github.com/$repository.git" 
 
 # cd into the local repo and perform a diff of the two tags.
 cd $repo_name
