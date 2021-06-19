@@ -1,7 +1,7 @@
 # scripts
 
 
-#Assignment 2
+# Assignment 2
 
 This script takes three inputs - Github repository, tag 1 and tag 2.
 
