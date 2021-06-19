@@ -52,9 +52,8 @@ Notes:
 - This script was produced and tested on a Mac OSX operating system. 
 
 How to run?
+- cd into the directory that contains the script
 - Ensure the following command is run: chmod u+x a2.sh
-
-## Example Run
-./a2.sh 99designs/aws-vault v6.2.0 v6.3.1
+- Example run: ./a2.sh 99designs/aws-vault v6.2.0 v6.3.1
  
 
