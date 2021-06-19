@@ -18,6 +18,10 @@ For the script that runs on an EC2 instance, there are a few things that must be
 
 For the script that runs locally, it starts off by authenticating the user using their programmatic access keys. It then goes on to perform the query and then deletes the credentials.
 
+Pre-requisites for running this script:
+- Must have AWS CLI installed (preferably version 2)
+- Must have coreutils package
+
 Implementation Detail for a1_ec2.sh:
 - There was no method I could find where I could take the account ID as an input and authenticate to the AWS account.
 - Hence, I created the script with the assumption that the script was being run on an EC2 instance with the correct IAM role attached to it.
