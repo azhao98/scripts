@@ -7,12 +7,15 @@ repository=$1
 tag1=$2
 tag2=$3
 
+# Use regular expressions to get just the repository name.
+repo_name=${repository##*/}
+
 # Change to home directory and clone the repo. 
 cd ~
-git clone "https://github.com/github/$repository.git"
+git clone "https://github.com/$repository.git" --depth=2
 
 # cd into the local repo and perform a diff of the two tags.
-cd $repository
+cd $repo_name
 diff_files=$(git diff $tag1 $tag2 --name-only)
 
 echo "The list of files with differences between tag ${tag1} and ${tag2} is: "
@@ -30,4 +33,4 @@ done
 
 # Removes the repo at the end.
 cd ..
-rm -rf $repository
+rm -rf $repo_name
